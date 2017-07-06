@@ -18,7 +18,7 @@ queueMethods.dequeue = function() {
   if ( this.size2 > 0 ) {
     var dequeued = this.storage[ 0 ];
 
-    for ( var key in this.storage ) {a
+    for ( var key in this.storage ) {
       this.storage[ key ] = this.storage[ Number( key ) + 1 ];
     }
 
