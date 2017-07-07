@@ -24,7 +24,6 @@ treeMethods.contains = function(target) {
     }  
   }
   return false;
-  
 };
 
 /*
