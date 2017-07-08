@@ -10,10 +10,12 @@ var Tree = function(value) {
 
 var treeMethods = {};
 
+//O(1)
 treeMethods.addChild = function(value) {
   this.children.push(Tree(value));
 };
 
+// O(1)
 treeMethods.removeChild = function(value) {
   for ( var i = 0; i < this.children.length; i++ ) {
     if ( this.children[ i ].value === value ) {
@@ -22,6 +24,7 @@ treeMethods.removeChild = function(value) {
   }
 };
 
+// O(n)
 treeMethods.contains = function(target) {
   if (this.value === target) {
     return true;
@@ -37,3 +40,4 @@ treeMethods.contains = function(target) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+

@@ -10,6 +10,7 @@ var BinarySearchTree = function( value ) {
 
 BinarySearchTree.prototype.root = undefined;
 
+//O(log(n))
 BinarySearchTree.prototype.insert = function( value, parent ) {
   if ( !this.root ) {
     this.root = this;
@@ -34,8 +35,37 @@ BinarySearchTree.prototype.insert = function( value, parent ) {
       return currentNode.right;
     }
   }
+
+  //This works too...
+  /*var current = this.root;
+
+  while ( current ) {
+    if ( value < current.value ) {
+      if ( !current.left ) {
+        current.left = BinarySearchTree( value );
+
+        return current.left;
+      }
+      
+      current = current.left;
+    }
+
+    if ( value > current.value ) {
+      if ( !current.right ) {
+        current.right = BinarySearchTree( value );
+
+        return current.right;
+      }
+      current = current.right;
+    }
+
+    if ( value === current.value ) {
+      return;
+    }
+  }*/
 };
 
+//O(log(n))
 BinarySearchTree.prototype.contains = function( value ) {
   var current = this.root;
 
@@ -52,6 +82,7 @@ BinarySearchTree.prototype.contains = function( value ) {
   return false;   
 };
 
+// O(n)
 BinarySearchTree.prototype.depthFirstLog = function( callBack, parent ) {
   var currentNode = parent ? parent : this.root;
   

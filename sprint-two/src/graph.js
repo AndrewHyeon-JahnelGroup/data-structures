@@ -5,14 +5,14 @@ var Graph = function() {
 Graph.prototype.vertices = [];
 Graph.prototype.edges = {};
 
-// Add a node to the graph, passing in the node's value.
+// O(n)
 Graph.prototype.addNode = function( node ) {
   if ( !this.contains( node ) ) { 
     this.vertices.push( node );
   }
 };
 
-// Return a boolean value indicating if the value passed to contains is represented in the graph.
+// O(n)
 Graph.prototype.contains = function( node ) {
   for ( var i = 0; i !== this.vertices.length; i++ ) {
     if ( this.vertices[ i ] === node ) {
@@ -23,7 +23,7 @@ Graph.prototype.contains = function( node ) {
   return false;
 };
 
-// Removes a node from the graph.
+// O(n)
 Graph.prototype.removeNode = function( node ) {
   var nodeString = JSON.stringify( node );
 
@@ -40,7 +40,7 @@ Graph.prototype.removeNode = function( node ) {
   delete this.edges[ node ];
 };
 
-// Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
+// O(1)
 Graph.prototype.hasEdge = function( fromNode, toNode ) {
   var fromNodeString = JSON.stringify( fromNode );
   var toNodeString = JSON.stringify( toNode );
@@ -52,7 +52,7 @@ Graph.prototype.hasEdge = function( fromNode, toNode ) {
   return false;
 };
 
-// Connects two nodes in a graph by adding an edge between them.
+// O(1)
 Graph.prototype.addEdge = function( fromNode, toNode ) {
   var fromNodeString = JSON.stringify( fromNode );
   var toNodeString = JSON.stringify( toNode );
@@ -69,7 +69,7 @@ Graph.prototype.addEdge = function( fromNode, toNode ) {
   this.edges[ toNodeString ][ fromNodeString ] = true;
 };
 
-// Remove an edge between any two specified (by value) nodes.
+// O(1)
 Graph.prototype.removeEdge = function( fromNode, toNode ) {
   var fromNodeString = JSON.stringify( fromNode );
   var toNodeString = JSON.stringify( toNode );
@@ -78,7 +78,7 @@ Graph.prototype.removeEdge = function( fromNode, toNode ) {
   delete this.edges[ toNodeString ][ fromNodeString ];
 };
 
-// Pass in a callback which will be executed on each node of the graph.
+// O(n)
 Graph.prototype.forEachNode = function( cb ) {
   for ( var i = 0; i !== this.vertices.length; i++ ) {
     cb( this.vertices[ i ] );
