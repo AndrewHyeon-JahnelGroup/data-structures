@@ -27,6 +27,7 @@ describe('set', function() {
   it('should not add duplicates of existing values', function() {
     set.add('Andrew Hyeon');
     set.add('Andrew Hyeon');
-    expect(set._storage[ set._storage.length - 1 ] !== set._storage[ set._storage.length - 2 ]).to.equal(true);
+    set.remove('Andrew Hyeon');
+    expect(set.contains('Andrew Hyeon')).to.equal(false);
   });
 });
