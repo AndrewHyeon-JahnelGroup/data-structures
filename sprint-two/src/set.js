@@ -1,7 +1,7 @@
 var Set = function() {
   var set = Object.create( setPrototype );
 
-  set._storage = []; // fix me
+  set._storage = {}; // fix me
 
   return set;
 };
@@ -9,21 +9,18 @@ var Set = function() {
 var setPrototype = {};
 
 setPrototype.add = function( item ) {
-  if (!_.contains(this._storage, item)) {
-    this._storage.push(item);
+  //var itemString = JSON.stringify(item);
+  if (!this._storage[item]) {
+    this._storage[item] = item;
   }
 };
 
 setPrototype.contains = function( item ) {
-  return _.contains(this._storage, item);
+  return this._storage[item] ? true : false;
 };
 
 setPrototype.remove = function( item ) {
-  for (var i = 0; i < this._storage.length; i++) {
-    if ( this._storage[i] === item) {
-      this._storage.splice(i, 1);
-    }
-  }
+  delete this._storage[item];
 };
 
 /*
