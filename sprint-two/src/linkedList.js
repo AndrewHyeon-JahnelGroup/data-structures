@@ -16,6 +16,16 @@ var LinkedList = function() {
     }
 
     list.tail = node;
+
+    return node;
+  };
+
+  list.addAfter = function ( value, prevNode ) {
+    var newNode = Node( value );
+    var temp = prevNode.next;
+
+    prevNode.next = newNode;
+    newNode.next = temp;
   };
 
   //O( c )

@@ -8,14 +8,14 @@ var BinarySearchTree = function( value ) {
   return node;
 };
 
-BinarySearchTree.root = undefined;
+BinarySearchTree.prototype.root = undefined;
 
 BinarySearchTree.prototype.insert = function( value, parent ) {
   if ( !this.root ) {
     this.root = this;
   }
 
-  var currentNode = parent ? parent : this.root
+  var currentNode = parent ? parent : this.root;
 
   if ( value < currentNode.value ) {
     if ( currentNode.left ) {
@@ -41,7 +41,7 @@ BinarySearchTree.prototype.contains = function( value ) {
     if ( value === current.value ) {
       return true;
     } else if ( value < current.value ) {
-      current = current.left;
+      current = current.left; 
     } else {
       current = current.right;
     }
