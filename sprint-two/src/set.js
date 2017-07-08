@@ -9,7 +9,7 @@ var Set = function() {
 var setPrototype = {};
 
 setPrototype.add = function( item ) {
-  if(!_.contains(this._storage, item)){
+  if (!_.contains(this._storage, item)) {
     this._storage.push(item);
   }
 };
@@ -19,8 +19,8 @@ setPrototype.contains = function( item ) {
 };
 
 setPrototype.remove = function( item ) {
-  for(var i = 0; i < this._storage.length; i++){
-    if(this._storage[i] === item){
+  for (var i = 0; i < this._storage.length; i++) {
+    if ( this._storage[i] === item) {
       this._storage.splice(i, 1);
     }
   }

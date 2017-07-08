@@ -24,4 +24,9 @@ describe('set', function() {
     expect(set.contains('Mel Gibson')).to.equal(false);
   });
 
+  it('should not add duplicates of existing values', function() {
+    set.add('Andrew Hyeon');
+    set.add('Andrew Hyeon');
+    expect(set._storage[ set._storage.length - 1 ] !== set._storage[ set._storage.length - 2 ]).to.equal(true);
+  });
 });
