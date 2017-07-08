@@ -14,12 +14,20 @@ treeMethods.addChild = function(value) {
   this.children.push(Tree(value));
 };
 
+treeMethods.removeChild = function(value) {
+  for ( var i = 0; i < this.children.length; i++ ) {
+    if ( this.children[ i ].value === value ) {
+      this.children.splice( i, 1 );
+    }
+  }
+};
+
 treeMethods.contains = function(target) {
-  if(this.value === target){
+  if (this.value === target) {
     return true;
   }
-  for(var child = 0; child !== this.children.length; child++){
-    if(this.children[child].contains(target)){
+  for (var child = 0; child !== this.children.length; child++) {
+    if (this.children[child].contains(target)) {
       return true;
     }  
   }
