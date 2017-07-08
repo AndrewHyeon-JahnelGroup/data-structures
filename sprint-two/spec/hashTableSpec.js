@@ -73,4 +73,13 @@ describe('hashTable', function() {
     hashTable.remove('Mr.');
     expect(hashTable._limit).to.equal(8);
   });
+
+  it('should only remove specified values', function() {
+    hashTable.insert('tom', 'cruise');
+    hashTable.insert('mike', 'andmike');
+    hashTable.insert('mitch', 'motch');
+    hashTable.remove('mike');
+    expect(hashTable.retrieve('tom')).to.equal('cruise');
+    expect(hashTable.retrieve('mitch')).to.equal('motch');
+  }); 
 });
