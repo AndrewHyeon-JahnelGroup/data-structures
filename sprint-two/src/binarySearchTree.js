@@ -5,7 +5,7 @@ var BinarySearchTree = function( value ) {
   node.left = undefined;
   node.right = undefined;
 
-  return node;
+  return node;  
 };
 
 BinarySearchTree.prototype.root = undefined;
@@ -22,6 +22,7 @@ BinarySearchTree.prototype.insert = function( value, parent ) {
       this.insert( value, currentNode.left );
     } else { 
       currentNode.left = BinarySearchTree( value );
+      return currentNode.left;
     } 
   }
 
@@ -30,7 +31,8 @@ BinarySearchTree.prototype.insert = function( value, parent ) {
       this.insert( value, currentNode.right );
     } else { 
       currentNode.right = BinarySearchTree( value );
-    } 
+      return currentNode.right;
+    }
   }
 };
 
