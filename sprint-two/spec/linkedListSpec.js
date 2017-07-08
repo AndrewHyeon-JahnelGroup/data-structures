@@ -51,5 +51,14 @@ describe('linkedList', function() {
     expect(linkedList.contains(4)).to.equal(false);
   });
 
+  it('should add a value after a specified node', function() {
+    var node4 = linkedList.addToTail(4);
+    var node5 = linkedList.addToTail(5);
+    linkedList.addAfter(10, node4);
+    expect(linkedList.contains(10)).to.equal(true);
+    expect(node4.next.value).to.equal(10);
+    
+  });
+
   // add more tests here to test the functionality of linkedList
 });
