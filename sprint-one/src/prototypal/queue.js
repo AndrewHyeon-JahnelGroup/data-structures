@@ -1,6 +1,7 @@
 var Queue = function() {
   var instance = Object.create(queueMethods);
-  instance.size2 = 0;
+  instance.head = 0;
+  instance.tail = 0;
   instance.storage = {};
   return instance;
 };
@@ -8,21 +9,19 @@ var Queue = function() {
 var queueMethods = {};
 
 queueMethods.enqueue = function(value) {
-  this.storage[this.size2] = value;
-  this.size2++;
+  this.storage[this.tail] = value;
+  this.tail++;
 };
 
 queueMethods.dequeue = function() {
-  if(this.size2>0){
-    var temp = this.storage[0];
-    for(var i in this.storage){
-      this.storage[i] = this.storage[Number(i) + 1];
-    }
-    this.size2--;
+  if (this.tail > this.head) {
+    var temp = this.storage[this.head];
+    delete this.storage[this.head];
+    this.head++;
     return temp;
   }
 };
 
 queueMethods.size = function() {
-  return this.size2;
+  return this.tail - this.head;
 };

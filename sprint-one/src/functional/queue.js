@@ -1,30 +1,28 @@
 var Queue = function() {
   var someInstance = {};
   var storage = {};
-  var size = 0;
+  var head = 0;
+  var tail = 0;
 
   someInstance.enqueue = function( value ) {
-    storage[ size ] = value;
+    storage[ tail ] = value;
 
-    size++;
+    tail++;
   };
 
   someInstance.dequeue = function() {
-    if ( size > 0 ) {
-      var dequeued = storage[ 0 ];
+    if ( tail > head ) {
+      var dequeued = storage[ head ];
+      delete storage[ head ];
 
-      for ( var key in storage ) {
-        storage[ key ] = storage[ Number( key ) + 1 ];
-      }
-
-      size--;
+      head++;
 
       return dequeued;
     }
   };
 
   someInstance.size = function() {
-    return size;
+    return tail - head;
   };
 
   return someInstance;

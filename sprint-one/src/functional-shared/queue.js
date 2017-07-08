@@ -1,5 +1,5 @@
 var Queue = function() {
-  var instance = { size2: 0, storage: {} };
+  var instance = { head: 0, tail: 0, storage: {} };
 
   _.extend( instance, queueMethods );
   
@@ -9,25 +9,22 @@ var Queue = function() {
 var queueMethods = {};  
 
 queueMethods.enqueue = function( value ) {
-  this.storage[ this.size2 ] = value;
+  this.storage[ this.tail ] = value;
 
-  this.size2++;
+  this.tail++;
 };
 
 queueMethods.dequeue = function() {
-  if ( this.size2 > 0 ) {
-    var dequeued = this.storage[ 0 ];
+  if ( this.tail > this.head ) {
+    var dequeued = this.storage[ this.head ];
+    delete this.storage[ this.head ];
 
-    for ( var key in this.storage ) {
-      this.storage[ key ] = this.storage[ Number( key ) + 1 ];
-    }
-
-    this.size2--;
+    this.head++;
 
     return dequeued;
   }
 };
 
 queueMethods.size = function() {
-  return this.size2;
+  return this.tail - this.head;
 };
