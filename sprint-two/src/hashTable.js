@@ -52,7 +52,7 @@ HashTable.prototype.remove = function( k ) {
       bucket.splice( i, 1 );
       this._count--;
 
-      if ( (this._count === this._limit / 4) && (this._limit > 8) ) {
+      if ( this._count === this._limit / 4 && this._limit > 8 ) {
         this.rehash();
       }
     }
@@ -72,19 +72,19 @@ HashTable.prototype.rehash = function() {
     }
   }
 
-  console.log( tempStorage );
-
-  if ( this._count === 3 * this._count / 4) {
+  if ( this._count === 3 * this._limit / 4 ) {
     this._limit = 2 * this._limit;
 
     this._storage = LimitedArray( this._limit );
   }
 
-  if ( (this._count === this._count / 4) && (this._limit > 8) ) {
-    this._limit = this.limit / 2;
+  if ( this._count === this._limit / 4 && this._limit > 8 ) {
+    this._limit = this._limit / 2;
 
     this._storage = LimitedArray( this._limit );
   }
+
+  this._count = 0;
 
   for ( var i = 0; i !== tempStorage.length; i++ ) {
     this.insert( tempStorage[ i ][ 0 ], tempStorage[ i ][ 1 ] );
